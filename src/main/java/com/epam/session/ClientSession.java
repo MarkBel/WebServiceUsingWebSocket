@@ -1,8 +1,8 @@
 package com.epam.session;
 
 import com.epam.handler.Handler;
-import com.epam.logic.Request;
-import com.epam.logic.Response;
+import com.epam.transport.Request;
+import com.epam.transport.Response;
 import com.epam.server.Server;
 
 import java.io.BufferedReader;

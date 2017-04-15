@@ -1,7 +1,7 @@
 package com.epam.handler.command;
 
-import com.epam.logic.Request;
-import com.epam.logic.Response;
+import com.epam.transport.Request;
+import com.epam.transport.Response;
 
 import java.io.IOException;
 

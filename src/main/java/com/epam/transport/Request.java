@@ -1,4 +1,4 @@
-package com.epam.logic;
+package com.epam.transport;
 
 import com.epam.constants.GlobalConstants;
 import com.epam.utils.HttpMethodUtils;

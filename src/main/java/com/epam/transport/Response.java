@@ -1,12 +1,11 @@
-package com.epam.logic;
+package com.epam.transport;
+
+import com.epam.constants.GlobalConstants;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import com.epam.constants.GlobalConstants;
-import jdk.nashorn.internal.ir.RuntimeNode;
 
 /**
  * Created by Mark_Rudak on 4/13/2017.
@@ -29,16 +28,11 @@ public class Response {
 
     public static void createResponse(Response resp, Request rq) {
 
-        System.out.println("1");
         String body = "";
         resp.setVersion(rq.getVersion());
-        System.out.println("2");
         resp.setContentLength(String.valueOf(body.getBytes().length));
-        System.out.println("3");
         resp.setBody(body);
         resp.setContentType(rq.getContentType());
-
-
 
         try {
             resp.write();
@@ -55,26 +49,21 @@ public class Response {
 
         responseMap.put(version, statusCode);
 
-        System.out.println("5");
         responseMap.put(GlobalConstants.SERVER, GlobalConstants.SERVER_VALUE);
 
-        System.out.println("6");
         if (!contentLength.isEmpty()) {
             responseMap.put(GlobalConstants.CONTENT_TYPE, contentType + "\r\n");
         }
-        System.out.println("7");
         if (!contentLength.isEmpty()) {
             responseMap.put(GlobalConstants.CONTENT_LENGTH, contentLength + "\r\n");
         }
 
-        System.out.println("8");
         responseMap.put(GlobalConstants.CONNECTION, GlobalConstants.CONNECTION_VALUE);
 
         if (!body.isEmpty()) {
             responseMap.put(GlobalConstants.BODY, body);
         }
 
-        System.out.println("9");
         String response = "";
 
         for (Map.Entry<String, String> pair : responseMap.entrySet()) {
@@ -82,8 +71,7 @@ public class Response {
             String value = pair.getValue();
             if (key.equals(GlobalConstants.BODY)) {
                 response += value;
-            } else
-            {
+            } else {
                 response += key + value;
             }
         }

@@ -13,6 +13,8 @@ public class GlobalConstants {
 
     public static final String STATUS_CODE_400= "400 Bad Request \r\n";
 
+    public static final  String STATUS_CODE_404 = " 404 Not Found\r\n";
+
     public static final String GET = "GET";
 
     public static final String POST = "POST";
@@ -41,7 +43,7 @@ public class GlobalConstants {
 
     public static final String SERVER_VALUE = "MyServer \r\n";
 
-    public static final String CONTENT_TYPE_XML_VVALUE = "application/xml";
+    public static final String CONTENT_TYPE_XML_VALUE = "application/xml";
 
     public static final String CONNECTION_VALUE = "close\r\n\r\n";
 

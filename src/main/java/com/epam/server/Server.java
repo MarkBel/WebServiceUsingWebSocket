@@ -3,7 +3,7 @@ package com.epam.server;
 import com.epam.constants.GlobalConstants;
 import com.epam.handler.Handler;
 import com.epam.handler.command.*;
-import com.epam.logic.*;
+import com.epam.transport.*;
 import com.epam.session.ClientSession;
 import org.apache.log4j.Logger;
 

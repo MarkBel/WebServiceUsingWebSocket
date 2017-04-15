@@ -3,8 +3,8 @@ package com.epam.handler.command;
 import com.epam.bean.Book;
 import com.epam.constants.GlobalConstants;
 import com.epam.storage.BookStore;
-import com.epam.logic.Request;
-import com.epam.logic.Response;
+import com.epam.transport.Request;
+import com.epam.transport.Response;
 import com.epam.utils.jackson.JsonUtils;
 import com.epam.utils.xstream.XmlUtils;
 
@@ -22,7 +22,7 @@ public class AddBookImpl implements ICommand {
         String contentType = rq.getContentType();
         rp.setContentType(contentType);
         try {
-            if (contentType.equals(GlobalConstants.CONTENT_TYPE_XML_VVALUE)) {
+            if (contentType.equals(GlobalConstants.CONTENT_TYPE_XML_VALUE)) {
                 bookAdded = XmlUtils.parseFromXml(rq.getBody());
             }else{
                 bookAdded = JsonUtils.fromJson(rq.getBody(), Book.class);

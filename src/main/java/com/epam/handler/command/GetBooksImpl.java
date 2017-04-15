@@ -3,8 +3,8 @@ package com.epam.handler.command;
 import com.epam.bean.Book;
 import com.epam.constants.GlobalConstants;
 import com.epam.storage.BookStore;
-import com.epam.logic.Request;
-import com.epam.logic.Response;
+import com.epam.transport.Request;
+import com.epam.transport.Response;
 import com.epam.utils.jackson.JsonUtils;
 import com.epam.utils.xstream.XmlUtils;
 
@@ -26,22 +26,23 @@ public class GetBooksImpl implements ICommand {
         rp.setContentType(contentType);
         List<Book> books = new BookStore().getAllBooks();
 
-        if (contentType.equals(GlobalConstants.CONTENT_TYPE_XML_VVALUE)) {
-            body = XmlUtils.parseToXml(books);
-        }else{
-         body = JsonUtils.toJson(books);
+        try {
+            if (contentType.equals(GlobalConstants.CONTENT_TYPE_XML_VALUE)) {
+                body = XmlUtils.parseToXml(books);
+            }else{
+                body = JsonUtils.toJson(books);
+            }
+            rp.setStatusCode(GlobalConstants.STATUS_CODE_200_OK);
+        }catch (Exception e){
+            rp.setStatusCode(GlobalConstants.STATUS_CODE_404);
         }
-
         rp.setContentLength(String.valueOf(body.getBytes().length));
         rp.setBody(body);
         rp.setVersion(rq.getVersion());
-        rp.setStatusCode(GlobalConstants.STATUS_CODE_200_OK);
-
-
-
 
         try {
             rp.write();
+            System.out.println(rp);
         } catch (IOException e) {
             e.printStackTrace();
         }

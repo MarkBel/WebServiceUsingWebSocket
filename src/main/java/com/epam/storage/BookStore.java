@@ -41,9 +41,7 @@ public class BookStore {
             if (book.getId() == bookDeleted.getId()) {
                 bookArrayList.remove(book);
                 flag = true;
-                break;
             }
-
         }
         if (flag == true) {
             LOGGER.info("Command deleteBook executed in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms");
