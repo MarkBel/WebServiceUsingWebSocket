@@ -4,7 +4,7 @@ package com.epam.utils;
  * Created by Mark_Rudak on 4/13/2017.
  */
 public class SplitUtils {
-    public static String getLastSplitValueBy(String sourceString, String patternForSplit) {
+    public static String getLastSplit(String sourceString, String patternForSplit) {
         String lastValue = "";
         String[] content = sourceString.split(patternForSplit);
 

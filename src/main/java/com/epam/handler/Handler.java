@@ -1,5 +1,7 @@
 package com.epam.handler;
 
+import com.epam.handler.command.ICommand;
+
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
@@ -7,12 +9,12 @@ public  class Handler {
 
     private String method;
     private String uri;
-    private IHandler iHandler;
+    private ICommand iCommand;
 
-    public Handler(String method, String uri, IHandler iHandler) {
+    public Handler(String method, String uri, ICommand iCommand) {
         this.method = method;
         this.uri = uri;
-        this.iHandler = iHandler;
+        this.iCommand = iCommand;
     }
 
     public String getMethod() {
@@ -31,13 +33,13 @@ public  class Handler {
         this.uri = uri;
     }
 
-    public IHandler getiHandler() {
+    public ICommand getiCommand() {
         System.out.println("Handler Found");
-        return iHandler;
+        return iCommand;
     }
 
-    public void setiHandler(IHandler iHandler) {
-        this.iHandler = iHandler;
+    public void setiCommand(ICommand iCommand) {
+        this.iCommand = iCommand;
     }
 
 

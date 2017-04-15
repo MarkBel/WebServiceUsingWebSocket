@@ -35,7 +35,7 @@ public class HttpMethodUtils {
         int contentLength = 0;
         for (String header : headerValue) {
             if (header.contains(GlobalConstants.CONTENT_LENGTH)) {
-                contentLength = Integer.parseInt(SplitUtils.getLastSplitValueBy(header, GlobalConstants.COLON_SPLITTER));
+                contentLength = Integer.parseInt(SplitUtils.getLastSplit(header, GlobalConstants.COLON_SPLITTER));
             }
         }
         return contentLength;

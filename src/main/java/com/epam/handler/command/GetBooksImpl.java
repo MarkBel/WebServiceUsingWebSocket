@@ -1,4 +1,4 @@
-package com.epam.handler;
+package com.epam.handler.command;
 
 import com.epam.bean.Book;
 import com.epam.constants.GlobalConstants;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
-public class GetBooksImpl implements IHandler {
+public class GetBooksImpl implements ICommand {
 
 
 

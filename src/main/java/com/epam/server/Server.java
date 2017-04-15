@@ -2,7 +2,7 @@ package com.epam.server;
 
 import com.epam.constants.GlobalConstants;
 import com.epam.handler.Handler;
-import com.epam.handler.*;
+import com.epam.handler.command.*;
 import com.epam.logic.*;
 import com.epam.session.ClientSession;
 import org.apache.log4j.Logger;
@@ -68,7 +68,7 @@ public class Server{
         server.addHandler(GlobalConstants.PUT,GlobalConstants.BOOK_PATH,new UpdateBookImpl());
     }
 
-    public void addHandler(String method, String path, IHandler handler) {
+    public void addHandler(String method, String path, ICommand handler) {
         HANDLERS.add(new Handler(method, path, handler));
     }
 

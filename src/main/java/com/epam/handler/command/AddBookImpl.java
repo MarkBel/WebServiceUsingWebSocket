@@ -1,4 +1,4 @@
-package com.epam.handler;
+package com.epam.handler.command;
 
 import com.epam.bean.Book;
 import com.epam.constants.GlobalConstants;
@@ -7,14 +7,13 @@ import com.epam.logic.Request;
 import com.epam.logic.Response;
 import com.epam.utils.jackson.JsonUtils;
 import com.epam.utils.xstream.XmlUtils;
-import com.sun.javaws.jnl.XMLUtils;
 
 import java.io.IOException;
 
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
-public class AddBookImpl implements IHandler {
+public class AddBookImpl implements ICommand {
 
     @Override
     public  void handle(Request rq, Response rp) throws IOException {

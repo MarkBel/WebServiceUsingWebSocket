@@ -30,7 +30,7 @@ public class ClientSession implements Runnable{
             rp = new Response(socket.getOutputStream());
             Handler requiredHandl =   Server.findHandler(rq);
             System.out.println("Handler");
-            requiredHandl.getiHandler().handle(rq, rp);
+            requiredHandl.getiCommand().handle(rq, rp);
             this.socket.close();
         }   catch (IOException e) {
             System.out.println(rp);

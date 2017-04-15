@@ -1,10 +1,10 @@
-package com.epam.handler;
+package com.epam.handler.command;
 
 import com.epam.bean.Book;
 import com.epam.constants.GlobalConstants;
+import com.epam.storage.BookStore;
 import com.epam.logic.Request;
 import com.epam.logic.Response;
-import com.epam.storage.BookStore;
 import com.epam.utils.jackson.JsonUtils;
 
 import java.io.IOException;
@@ -12,19 +12,20 @@ import java.io.IOException;
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
-public class UpdateBookImpl implements IHandler{
+public class DeleteBookImpl implements ICommand {
 
     @Override
     public void handle(Request rq, Response rp) throws IOException {
 
-        Book bookUpdated = null;
+        Book bookDeleted = null;
         try {
-            bookUpdated = JsonUtils.fromJson(rq.getBody(), Book.class);
-            BookStore.updateBook(bookUpdated);
+            bookDeleted = JsonUtils.fromJson(rq.getBody(), Book.class);
+            System.out.println(bookDeleted);
+            BookStore.deleteBook(bookDeleted);
             rp.setStatusCode(GlobalConstants.STATUS_CODE_200_OK);
         } catch (Exception ex) {
             rp.setStatusCode(GlobalConstants.STATUS_CODE_400);
         }
-        rp.createResponse(rp,rq);
+            rp.createResponse(rp,rq);
     }
 }
