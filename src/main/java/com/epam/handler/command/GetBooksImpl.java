@@ -24,7 +24,7 @@ public class GetBooksImpl implements ICommand {
         String body = "";
 
         //If content type is null, default value will be application/json
-        String contentType = rq.validateContentType(rq);
+        String contentType = rq.validateContentType(rq.getContentType());
 
         List<Book> books = new BookStore().getAllBooks();
 

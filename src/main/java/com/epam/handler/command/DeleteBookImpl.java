@@ -20,7 +20,6 @@ public class DeleteBookImpl implements ICommand {
         Book bookDeleted = null;
         try {
             bookDeleted = JsonUtils.fromJson(rq.getBody(), Book.class);
-            System.out.println(bookDeleted);
             BookStore.deleteBook(bookDeleted);
             rp.setStatusCode(GlobalConstants.STATUS_CODE_200_OK);
         } catch (Exception ex) {

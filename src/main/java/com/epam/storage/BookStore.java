@@ -15,7 +15,7 @@ public class BookStore {
 
     private static final Logger LOGGER = Logger.getLogger(BookStore.class.getName());
 
-    static List<Book> bookArrayList;
+    private static List<Book> bookArrayList;
 
 
     public BookStore() {
@@ -43,7 +43,7 @@ public class BookStore {
                 flag = true;
             }
         }
-        if (flag == true) {
+        if (flag) {
             LOGGER.info("Command deleteBook executed in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms");
         } else {
             throw new BookCommandException("Can't delete book with required id!");
@@ -51,7 +51,7 @@ public class BookStore {
     }
 
     public static void addBook(Book book) {
-            bookArrayList.add(book);
+        bookArrayList.add(book);
     }
 
     public static void updateBook(Book book) {
@@ -68,7 +68,7 @@ public class BookStore {
                 flag = true;
             }
         }
-        if (flag == true) {
+        if (flag) {
             LOGGER.info("Command updateBook executed in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms");
         } else {
             throw new BookCommandException("Can't update book with required id!");

@@ -12,6 +12,9 @@ import java.util.List;
  * Created by Mark_Rudak on 4/13/2017.
  */
 public class HttpMethodUtils {
+
+    private static final Integer bufferSize = 1024;
+
     public static List<String> getHeaderValue(BufferedReader rq) throws IOException {
 
         List<String> headerValue = new ArrayList<String>();
@@ -44,7 +47,7 @@ public class HttpMethodUtils {
     private static String getPostBody(BufferedReader rq, int contentLeng) throws IOException {
 
         StringWriter postRequest = new StringWriter();
-        char[] buffer = new char[1024];
+        char[] buffer = new char[bufferSize];
         int charToWrite = 0;
         while ((charToWrite = rq.read(buffer)) != -1) {
             postRequest.write(buffer, 0, charToWrite);

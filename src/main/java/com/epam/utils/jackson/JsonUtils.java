@@ -1,12 +1,16 @@
 package com.epam.utils.jackson;
 
+import com.epam.transport.Response;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
 public class JsonUtils {
+    private static final Logger LOGGER = Logger.getLogger(JsonUtils.class.getName());
+
     private static ObjectMapper mapper;
 
     static {

@@ -3,6 +3,7 @@ package com.epam.transport;
 import com.epam.constants.GlobalConstants;
 import com.epam.utils.HttpMethodUtils;
 import com.epam.utils.SplitUtils;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class Request {
 
+    private static final Logger LOGGER = Logger.getLogger(Request.class.getName());
     private String method;
     private String path;
     private String version;
@@ -73,9 +75,9 @@ public class Request {
         this.body = body;
     }
 
-    public String validateContentType(Request rq) {
-        if (rq.getContentType() != null) {
-            return rq.getContentType();
+    public  String validateContentType(String contentType) {
+        if (contentType != null) {
+            return contentType;
         } else {
             return "application/json";
         }
@@ -86,7 +88,7 @@ public class Request {
         try {
             headerValue = HttpMethodUtils.getHeaderValue(bfr);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Caught IOException: " + e.getMessage());
         }
 
         for (String value : headerValue) {

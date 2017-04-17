@@ -19,13 +19,12 @@ import java.util.concurrent.Executors;
 /**
  * Created by Mark_Rudak on 4/13/2017.
  */
-public class Server{
+public class Server {
 
-    private final  static Logger LOGGER = Logger.getLogger(Server.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
 
-    private final static List<Handler> HANDLERS = new ArrayList<Handler>();
+    private static final List<Handler> HANDLERS = new ArrayList<Handler>();
 
-    private ExecutorService pool;
     private int port;
     private int sizeOfTreadPool;
 
@@ -36,7 +35,7 @@ public class Server{
     }
 
     public void start() throws IOException {
-
+        ExecutorService pool;
         pool = Executors.newFixedThreadPool(sizeOfTreadPool);
         ServerSocket serSocket = new ServerSocket(port);
         while (true) {
@@ -63,9 +62,9 @@ public class Server{
 
     public static void configureServer(Server server) {
         server.addHandler(GlobalConstants.GET, GlobalConstants.BOOK_PATH, new GetBooksImpl());
-        server.addHandler(GlobalConstants.DELETE,GlobalConstants.BOOK_PATH,new DeleteBookImpl());
-        server.addHandler(GlobalConstants.POST,GlobalConstants.BOOK_PATH,new AddBookImpl());
-        server.addHandler(GlobalConstants.PUT,GlobalConstants.BOOK_PATH,new UpdateBookImpl());
+        server.addHandler(GlobalConstants.DELETE, GlobalConstants.BOOK_PATH, new DeleteBookImpl());
+        server.addHandler(GlobalConstants.POST, GlobalConstants.BOOK_PATH, new AddBookImpl());
+        server.addHandler(GlobalConstants.PUT, GlobalConstants.BOOK_PATH, new UpdateBookImpl());
     }
 
     public void addHandler(String method, String path, ICommand handler) {

@@ -1,6 +1,8 @@
 package com.epam.transport;
 
 import com.epam.constants.GlobalConstants;
+import com.epam.session.ClientSession;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -12,6 +14,7 @@ import java.util.Map;
  */
 public class Response {
 
+    private static final Logger LOGGER = Logger.getLogger(Response.class.getName());
 
     private OutputStream os;
     private String version;
@@ -36,9 +39,8 @@ public class Response {
 
         try {
             resp.write();
-            System.out.println(resp);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Caught IOException: " + e.getMessage());
         }
     }
 
@@ -65,6 +67,7 @@ public class Response {
         }
 
         String response = "";
+
 
         for (Map.Entry<String, String> pair : responseMap.entrySet()) {
             String key = pair.getKey();

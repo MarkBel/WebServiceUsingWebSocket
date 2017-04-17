@@ -34,7 +34,6 @@ public  class Handler {
     }
 
     public ICommand getiCommand() {
-        System.out.println("Handler Found");
         return iCommand;
     }
 
