@@ -22,8 +22,10 @@ public class GetBooksImpl implements ICommand {
     public void handle(Request rq, Response rp) throws IOException {
 
         String body = "";
-        String contentType = rq.getContentType();
-        rp.setContentType(contentType);
+
+        //If content type is null, default value will be application/json
+        String contentType = rq.validateContentType(rq);
+
         List<Book> books = new BookStore().getAllBooks();
 
         try {
@@ -36,16 +38,12 @@ public class GetBooksImpl implements ICommand {
         }catch (Exception e){
             rp.setStatusCode(GlobalConstants.STATUS_CODE_404);
         }
+
+        rp.setContentType(contentType);
         rp.setContentLength(String.valueOf(body.getBytes().length));
         rp.setBody(body);
         rp.setVersion(rq.getVersion());
-
-        try {
-            rp.write();
-            System.out.println(rp);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        rp.write();
     }
 
 }

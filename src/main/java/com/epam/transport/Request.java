@@ -68,8 +68,17 @@ public class Request {
     public String getBody() {
         return body;
     }
+
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String validateContentType(Request rq) {
+        if (rq.getContentType() != null) {
+            return rq.getContentType();
+        } else {
+            return "application/json";
+        }
     }
 
     private void parseRequest(BufferedReader bfr) {
@@ -93,26 +102,22 @@ public class Request {
                 path = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.PATH, GlobalConstants.SPACE);
                 version = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.VERSION, GlobalConstants.SPACE);
 
-            }
-            else if (value.startsWith(GlobalConstants.DELETE)) {
+            } else if (value.startsWith(GlobalConstants.DELETE)) {
 
                 method = GlobalConstants.DELETE;
                 path = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.PATH, GlobalConstants.SPACE);
                 version = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.VERSION, GlobalConstants.SPACE);
 
-            }
-            else if (value.startsWith(GlobalConstants.PUT)) {
+            } else if (value.startsWith(GlobalConstants.PUT)) {
 
                 method = GlobalConstants.PUT;
                 path = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.PATH, GlobalConstants.SPACE);
                 version = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.VERSION, GlobalConstants.SPACE);
 
-            }
-            else if (value.startsWith(GlobalConstants.CONTENT_LENGTH)) {
+            } else if (value.startsWith(GlobalConstants.CONTENT_LENGTH)) {
                 contentLenght = Integer.parseInt(SplitUtils.getCertainSplitValueBy(value, GlobalConstants.VALUE,
                         GlobalConstants.COLON_SPLITTER));
-            }
-            else if (value.startsWith(GlobalConstants.CONTENT_TYPE)) {
+            } else if (value.startsWith(GlobalConstants.CONTENT_TYPE)) {
 
                 contentType = SplitUtils.getCertainSplitValueBy(value, GlobalConstants.VALUE, GlobalConstants.COLON_SPLITTER);
             }
