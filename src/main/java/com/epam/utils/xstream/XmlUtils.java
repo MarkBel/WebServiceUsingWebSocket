@@ -5,13 +5,14 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Mark_Rudak on 4/14/2017.
  */
 public class XmlUtils {
 
-    public static String parseToXml(List books)
+    public static String parseToXml(Set books)
     {
         XStream xstream = new XStream(new StaxDriver());
         xstream.alias("Books",List.class);

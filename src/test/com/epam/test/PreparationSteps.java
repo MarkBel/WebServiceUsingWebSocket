@@ -1,4 +1,4 @@
-package com.epam;
+package com.epam.test;
 
 import com.jayway.restassured.RestAssured;
 import org.junit.BeforeClass;
@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 /**
  * Created by Mark_Rudak on 4/17/2017.
  */
-public class PreparingSteps {
+public class PreparationSteps {
 
     @BeforeClass
     public static void setup() {

@@ -10,6 +10,7 @@ import com.epam.utils.xstream.XmlUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Mark_Rudak on 4/13/2017.
@@ -26,7 +27,7 @@ public class GetBooksImpl implements ICommand {
         //If content type is null, default value will be application/json
         String contentType = rq.validateContentType(rq.getContentType());
 
-        List<Book> books = new BookStore().getAllBooks();
+        Set<Book> books = new BookStore().getAllBooks();
 
         try {
             if (contentType.equals(GlobalConstants.CONTENT_TYPE_XML_VALUE)) {

@@ -3,9 +3,7 @@ package com.epam.storage;
 import com.epam.bean.Book;
 import com.epam.exception.BookCommandException;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -15,12 +13,12 @@ public class BookStore {
 
     private static final Logger LOGGER = Logger.getLogger(BookStore.class.getName());
 
-    private static List<Book> bookArrayList;
+    private static Set<Book> bookArrayList;
 
 
     public BookStore() {
         if (bookArrayList == null) {
-            bookArrayList = new ArrayList<Book>();
+            bookArrayList = new HashSet<Book>();
             Book bookIdiot = new Book(1, "Idiot", "Dostoevsky", "drama", 1869, 700);
             Book bookFinancier = new Book(2, "Financier", "Theodore Dreiser", "novel", 1912, 750);
             bookArrayList.add(bookIdiot);
@@ -28,7 +26,7 @@ public class BookStore {
         }
     }
 
-    public static List<Book> getAllBooks() {
+    public static Set<Book> getAllBooks() {
         return bookArrayList;
     }
 
@@ -39,11 +37,12 @@ public class BookStore {
         boolean flag = false;
         for (Book book : bookArrayList) {
             if (book.getId() == bookDeleted.getId()) {
-                bookArrayList.remove(book);
                 flag = true;
+                bookArrayList.remove(book);
+                break;
             }
         }
-        if (flag) {
+        if (flag==true) {
             LOGGER.info("Command deleteBook executed in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms");
         } else {
             throw new BookCommandException("Can't delete book with required id!");
@@ -51,6 +50,7 @@ public class BookStore {
     }
 
     public static void addBook(Book book) {
+        new BookStore();
         bookArrayList.add(book);
     }
 
