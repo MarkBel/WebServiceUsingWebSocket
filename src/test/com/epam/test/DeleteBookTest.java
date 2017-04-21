@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.jayway.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 
 /**
@@ -21,10 +20,10 @@ public class DeleteBookTest extends PreparationSteps {
 
 
         given().body(bookId).
-                when().delete("/book").then().statusCode(200);
+                when().delete(CONTENT_PATH).then().statusCode(200);
 
 
-        given().when().get("/book").then()
+        given().when().get(CONTENT_PATH).then()
                 .body(not("Idiot")).statusCode(200);
 
     }
@@ -36,6 +35,6 @@ public class DeleteBookTest extends PreparationSteps {
 
 
         given().body(bookId).
-                when().delete("/book").then().statusCode(404);
+                when().delete(CONTENT_PATH).then().statusCode(404);
     }
 }

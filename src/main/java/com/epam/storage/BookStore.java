@@ -74,4 +74,9 @@ public class BookStore {
             throw new BookCommandException("Can't update book with required id!");
         }
     }
+
+    public boolean bookStoreIsEmpty(){
+        return bookSet.isEmpty();
+    }
+
 }

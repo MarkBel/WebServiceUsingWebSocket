@@ -22,7 +22,7 @@ public class AddBookTest extends PreparationSteps {
         given()
                 .contentType(CONTENT_TYPE_JSON)
                 .body(bookBean)
-                .when().post("/book").then()
+                .when().post(CONTENT_PATH).then()
                 .statusCode(201);
 
         given().when().get("/book").then()
@@ -42,11 +42,11 @@ public class AddBookTest extends PreparationSteps {
                 .contentType(CONTENT_TYPE_XML)
                 .body(xmlObject)
                 .when()
-                .post("/book").then()
+                .post(CONTENT_PATH).then()
                 .statusCode(201);
 
-        given().when().get("/book").then()
-                .body(containsString("\"id\":3,\"bookName\":\"Harry Potter and Philosophy Stone\"")).statusCode(200);
+        given().when().get("/book").then().
+                body(containsString("\"id\":3,\"bookName\":\"Harry Potter and Philosophy Stone\"")).statusCode(200);
     }
 
 }

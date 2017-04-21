@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.jayway.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.containsString;
+
 
 /**
  * Created by Mark_Rudak on 4/21/2017.
@@ -20,7 +20,7 @@ public class UpdateBookTest extends PreparationSteps {
         Book bookForUpdating = Book.returnUpdatableBookForTest();
 
         given().contentType("application/json").body(bookForUpdating).
-                when().put("/book").then().statusCode(200);
+                when().put(CONTENT_PATH).then().statusCode(200);
 
 
 //        given().when().get("/book").then()
@@ -36,7 +36,7 @@ public class UpdateBookTest extends PreparationSteps {
 
 
         given().contentType("application/json").body(bookId).
-                when().put("/book").then().statusCode(404);
+                when().put(CONTENT_PATH).then().statusCode(404);
 
 
     }

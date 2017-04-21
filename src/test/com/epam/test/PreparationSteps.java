@@ -10,6 +10,7 @@ public class PreparationSteps {
 
     protected static final String CONTENT_TYPE_JSON = "application/json";
     protected static final String CONTENT_TYPE_XML = "application/xml";
+    protected static final String CONTENT_PATH = "/book";
 
 
     @BeforeClass
