@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
  */
 public class PreparationSteps {
 
+    protected static final String CONTENT_TYPE_JSON = "application/json";
+    protected static final String CONTENT_TYPE_XML = "application/xml";
+
+
     @BeforeClass
     public static void setup() {
         String port = System.getProperty("server.port");

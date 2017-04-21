@@ -1,9 +1,11 @@
 package com.epam.test;
 
+import com.epam.bean.Book;
+import com.epam.utils.xstream.XmlUtils;
+
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -13,22 +15,38 @@ import static org.hamcrest.CoreMatchers.containsString;
  */
 public class AddBookTest extends PreparationSteps {
 
+@Test
+    public void aBookJsonAddedOnAShelf() {
 
-    @Test
-    public void aBookAddedOnAShelf() {
-        Map<String,String> book = new HashMap<String,String>();
-        book.put("id", "3");
-
-
+        Book bookBean = Book.createBookForTest();
         given()
-                .contentType("application/json")
-                .body(book)
+                .contentType(CONTENT_TYPE_JSON)
+                .body(bookBean)
                 .when().post("/book").then()
                 .statusCode(201);
 
-//        given().when().get("/book").then()
-//                .body(containsString("null"));
+        given().when().get("/book").then()
+                .body(containsString("\"id\":3,\"bookName\":\"Harry Potter and Philosophy Stone\"")).statusCode(200);
 
+    }
+
+    @Test
+    public void aBookXmlAddedOnAShelf() {
+
+
+        Book bookBean = Book.createBookForTest();
+        String xmlObject = XmlUtils.parseToXmlBook(bookBean);
+
+
+        given()
+                .contentType(CONTENT_TYPE_XML)
+                .body(xmlObject)
+                .when()
+                .post("/book").then()
+                .statusCode(201);
+
+        given().when().get("/book").then()
+                .body(containsString("\"id\":3,\"bookName\":\"Harry Potter and Philosophy Stone\"")).statusCode(200);
     }
 
 }

@@ -16,12 +16,19 @@ import static org.hamcrest.CoreMatchers.equalTo;
 public class ReadBookTest extends PreparationSteps {
 
     @Test
-    public void basicGetBooksTest() {
-//        java.util.List<Book> list = new ArrayList<Book>();
-//
-//        list = given().when().get("/book").then().body(list);
-        given().when().get("/book").then().statusCode(200);
+    public void basicGetBooksJsonTest() {
+
+        given().contentType(CONTENT_TYPE_JSON).when().get("/book").then().statusCode(200);
+
     }
+
+
+    @Test
+    public void GetBooksXmlTest() {
+
+        given().contentType(CONTENT_TYPE_XML).when().get("/book").then().statusCode(200);
+    }
+
 
     @Test
     public void verifyNameOfBook() {
@@ -32,15 +39,18 @@ public class ReadBookTest extends PreparationSteps {
     @Test
     public void verifyNameStructured() {
         given().when().get("/book").then()
-                .body("bookName",equalTo("[Idiot,Financier]"));
+                .body("bookName", equalTo("[Idiot,Financier]"));
     }
 
     @Test
     public void verifyBookArgs() {
-        given().when().get("/book").then().
+        given()
+                .when()
+                .get("/book")
+                .then().
                 body(containsString("Idiot")).
-                body("year",equalTo("1869"))
-                .body("pageCount",equalTo(700));
+                body("year", equalTo("1869"))
+                .body("pageCount", equalTo(700));
     }
 
 }

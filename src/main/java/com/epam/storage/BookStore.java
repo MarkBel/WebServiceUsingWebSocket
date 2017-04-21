@@ -13,21 +13,21 @@ public class BookStore {
 
     private static final Logger LOGGER = Logger.getLogger(BookStore.class.getName());
 
-    private static Set<Book> bookArrayList;
+    private static Set<Book> bookSet;
 
 
     public BookStore() {
-        if (bookArrayList == null) {
-            bookArrayList = new HashSet<Book>();
+        if (bookSet == null) {
+            bookSet = new HashSet<Book>();
             Book bookIdiot = new Book(1, "Idiot", "Dostoevsky", "drama", 1869, 700);
             Book bookFinancier = new Book(2, "Financier", "Theodore Dreiser", "novel", 1912, 750);
-            bookArrayList.add(bookIdiot);
-            bookArrayList.add(bookFinancier);
+            bookSet.add(bookIdiot);
+            bookSet.add(bookFinancier);
         }
     }
 
     public static Set<Book> getAllBooks() {
-        return bookArrayList;
+        return bookSet;
     }
 
 
@@ -35,10 +35,10 @@ public class BookStore {
         new BookStore();
         long start = Calendar.getInstance().getTimeInMillis();
         boolean flag = false;
-        for (Book book : bookArrayList) {
+        for (Book book : bookSet) {
             if (book.getId() == bookDeleted.getId()) {
                 flag = true;
-                bookArrayList.remove(book);
+                bookSet.remove(book);
                 break;
             }
         }
@@ -51,14 +51,14 @@ public class BookStore {
 
     public static void addBook(Book book) {
         new BookStore();
-        bookArrayList.add(book);
+        bookSet.add(book);
     }
 
     public static void updateBook(Book book) {
         new BookStore();
         long start = Calendar.getInstance().getTimeInMillis();
         boolean flag = false;
-        for (Book booksArray : bookArrayList) {
+        for (Book booksArray : bookSet) {
             if (booksArray.getId() == book.getId()) {
                 booksArray.setAuthor(book.getAuthor());
                 booksArray.setBookName(book.getBookName());

@@ -29,6 +29,7 @@ public class ClientSession implements Runnable{
     public void run() {
         try {
             rq = new Request(new BufferedReader(new InputStreamReader(socket.getInputStream())));
+            System.out.println(rq);
             rp = new Response(socket.getOutputStream());
             Handler requiredHandl =   Server.findHandler(rq);
             requiredHandl.getiCommand().handle(rq, rp);

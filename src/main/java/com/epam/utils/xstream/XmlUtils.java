@@ -26,4 +26,11 @@ public class XmlUtils {
         return (Book)xstream.fromXML(xml);
     }
 
+    public static String parseToXmlBook(Book book)
+    {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("Book",Book.class);
+        return xstream.toXML(book);
+    }
+
 }

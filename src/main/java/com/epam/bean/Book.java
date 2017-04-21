@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 /**
  * Created by Mark_Rudak on 4/13/2017.
@@ -52,6 +50,7 @@ public class Book {
     public int getId() {
         return id;
     }
+
 
     public void setBookId(int bookId) {
         this.id = bookId;
@@ -135,5 +134,30 @@ public class Book {
                 ", pageCount=" + pageCount +
                 '}';
     }
+
+    public static Book createBookForTest()
+    {
+        Book bookBean = new Book();
+        bookBean.setBookId(3);
+        bookBean.setBookName("Harry Potter and Philosophy Stone");
+        bookBean.setAuthor("Rolling");
+        bookBean.setBookType("fantasy");
+        bookBean.setYear(1997);
+        bookBean.setPageCount(1700);
+        return bookBean;
+    }
+
+    public static Book returnUpdatableBookForTest()
+    {
+        Book bookBean = new Book();
+        bookBean.setBookId(2);
+        bookBean.setBookName("Harry Potter and The Prisoner Of Azkaban");
+        bookBean.setAuthor("Rolling");
+        bookBean.setBookType("fantasy");
+        bookBean.setYear(1997);
+        bookBean.setPageCount(1700);
+        return bookBean;
+    }
+
 
 }
