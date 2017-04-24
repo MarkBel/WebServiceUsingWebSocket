@@ -13,6 +13,9 @@ import static org.hamcrest.CoreMatchers.not;
  */
 public class DeleteBookTest extends PreparationSteps {
 
+    /**
+     * Delete book and to check that book successfully deleted
+     */
     @Test
     public void existingBookIsDeletedTest() {
         Map<String, String> bookId = new HashMap<String, String>();
@@ -28,6 +31,9 @@ public class DeleteBookTest extends PreparationSteps {
 
     }
 
+    /**
+     * Trying to delete nonExisting book
+     */
     @Test
     public void nonExistingBookIsDeletedTest() {
         Map<String, String> bookId = new HashMap<String, String>();

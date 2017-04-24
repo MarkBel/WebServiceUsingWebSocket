@@ -15,7 +15,10 @@ import static org.hamcrest.CoreMatchers.containsString;
  */
 public class AddBookTest extends PreparationSteps {
 
-@Test
+    /**
+     * Add book in JSON on a shelf and to check,that book added successfully
+     */
+    @Test
     public void aBookJsonAddedOnAShelf() {
 
         Book bookBean = Book.createBookForTest();
@@ -30,6 +33,9 @@ public class AddBookTest extends PreparationSteps {
 
     }
 
+    /**
+     * Add book in XML format on a shelf and to check,that book added successfully
+     */
     @Test
     public void aBookXmlAddedOnAShelf() {
 

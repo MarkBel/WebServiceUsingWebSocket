@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
 
 
 /**
@@ -14,6 +15,9 @@ import static com.jayway.restassured.RestAssured.given;
  */
 public class UpdateBookTest extends PreparationSteps {
 
+    /**
+     * Update book and to check that book successfully updated
+     */
     @Test
     public void updateExistingBookById() {
 
@@ -23,13 +27,16 @@ public class UpdateBookTest extends PreparationSteps {
                 when().put(CONTENT_PATH).then().statusCode(200);
 
 
-//        given().when().get("/book").then()
-//                .body(containsString("Idiot"));
+        given().when().get("/book").then()
+                .body(containsString(bookForUpdating.toString()));
 
     }
 
+    /**
+     * Trying to update non existing book
+     */
     @Test
-    public void updateNotExistingBookById() {
+    public void updateNonExistingBookById() {
 
         Map<String, String> bookId = new HashMap<String, String>();
         bookId.put("id", "4");
